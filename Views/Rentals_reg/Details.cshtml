@@ -1,0 +1,43 @@
+﻿@model RentalPad.Models.Rentals_reg
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Rentals_reg</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.National_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.National_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.R_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.R_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.R_location)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.R_location)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.No_rooms)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.No_rooms)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

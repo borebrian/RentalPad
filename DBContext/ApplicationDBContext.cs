@@ -1,6 +1,7 @@
-﻿using Fuela.Models;
+﻿
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
+using RentalPad.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,21 +11,16 @@ namespace Fuela.DBContext
 {
     public class ApplicationDBContext: DbContext
     {
-        public DbSet<Station_Owners> Station_owners { get; set; }
-        public DbSet<Station_reg> Station_reg { get; set; }
-        public string ConnectionString { get; set; }
+        public DbSet<Rental_Owners> Rental_owners { get; set; }
+   
+     
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
            : base(options) {
         
         }
-        public ApplicationDBContext(string connectionString)
-        {
-            this.ConnectionString = connectionString;
-        }
-
-        private MySqlConnection GetConnection()
-        {
-            return new MySqlConnection(ConnectionString);
-        }
+   
+     
+        public DbSet<RentalPad.Models.Rentals_reg> Rentals_reg { get; set; }
+     
     }
 }
