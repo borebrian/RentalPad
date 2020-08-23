@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Fuela.DBContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +26,10 @@ namespace RentalPad
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+            //services.AddDbContext<ApplicationDBContext>(options => options.UseMySql(absConnectionString));
+            services.AddDbContext<ApplicationDBContext>(
+    options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,7 +49,7 @@ namespace RentalPad
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            //app.UseMvc();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
