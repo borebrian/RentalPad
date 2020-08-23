@@ -16,7 +16,7 @@
                      <img src="/images/logo.png" class="logo1">
 
                  </a>
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Rentals Pad</a>
+                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">Rentals Pad</a>
                 <button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon text-light" style="color:white"></span>
@@ -24,11 +24,22 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Rental_Owners" asp-action="index">Owners reg</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Rentals_reg" asp-action="Index">Rentals reg</a>
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Rooms_reg" asp-action="Index">Rentals reg</a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Room_Category" asp-action="Index">Rental category</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Tenants" asp-action="Index">Tenants</a>
+                        </li> 
+
                     </ul>
                 </div>
             </div>
@@ -36,11 +47,28 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            @RenderBody()
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
+                    <div class="card card-1 d-flex ustify-content-center" >
+
+                        <div class="card-body text-center">
+                            <img  src="/images/logo.png" style="height:80%;width:60%" alt="First slide">
+
+                            <h5 class="card-title">Best Tenants Management System</h5>
+                            <p class="card-text">Be accountable of every single rent payments from your tenants.</p>
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-9 col-lg-9 col-xs-9">
+                    @RenderBody()
+
+                </div>
+            </div>
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted card card-1 text-center">
         <div class="container">
             &copy; 2020 - RentalPad - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

@@ -3,14 +3,16 @@ using System;
 using Fuela.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace RentalPad.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200823210414_v5")]
+    partial class v5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,74 +70,6 @@ namespace RentalPad.Migrations
                     b.HasIndex("Rental_OwnersNational_id");
 
                     b.ToTable("Rentals_reg");
-                });
-
-            modelBuilder.Entity("RentalPad.Models.Room_Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("Category")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Rent_Ammount")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Room_Category");
-                });
-
-            modelBuilder.Entity("RentalPad.Models.Rooms_reg", b =>
-                {
-                    b.Property<string>("Room_number")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
-
-                    b.Property<int>("Rental_reg")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Room_category")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Room_number");
-
-                    b.ToTable("Rooms_reg");
-                });
-
-            modelBuilder.Entity("RentalPad.Models.Tenants", b =>
-                {
-                    b.Property<int>("National_id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("End_date")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Full_names")
-                        .IsRequired()
-                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("Phone_number")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Rental_reg")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Start_date")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("National_id");
-
-                    b.ToTable("Tenants");
                 });
 
             modelBuilder.Entity("RentalPad.Models.Rentals_reg", b =>

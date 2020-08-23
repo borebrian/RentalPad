@@ -44,8 +44,15 @@ namespace RentalPad.Controllers
         }
 
         // GET: Rentals_reg/Create
-        public IActionResult Create()
+        public IActionResult Create(Rental_Owners rental_Owners)
         {
+            int selectedValue = rental_Owners.National_id;
+            List<Rental_Owners> idList = new List<Models.Rental_Owners>();
+            idList = (from product in _context.Rental_owners select product).ToList();
+            //idList.Insert(0, new Rental_Owners { National_id=0,Full_names})
+
+            idList.Insert(0, new Rental_Owners { National_id = 0, Full_names = "--Select National ID--" });
+            ViewBag.IDlist = idList;
             return View();
         }
 

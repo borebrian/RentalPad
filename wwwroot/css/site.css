@@ -8,8 +8,24 @@ for details on configuring this project to bundle and minify static web assets. 
 
 body {
     font-family: best;
+    background: #e2e1e0;
 }
-
+.icons1{
+    height:40px;
+    width:40px;
+}
+.card-1 {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+/*.card {
+    background: #fff;
+    border-radius: 2px;
+    display: inline-block;
+    height: 300px;
+    margin: 1rem;
+    position: relative;
+    width: 300px;
+}*/
 a.navbar-brand {
     white-space: normal;
     text-align: center;

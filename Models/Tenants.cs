@@ -27,5 +27,19 @@ namespace RentalPad.Models
         [Display(Name = "Location", Prompt = "Location")]
         public string Location { get; set; }
 
+
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Start date", Prompt = "Start date")]
+        public string Start_date { get; set; }
+
+        [DataType(DataType.Date)]
+        [Display(Name = "End date", Prompt = "End date")]
+        public string End_date { get; set; }
+
+        [Required]
+        [Display(Name = "Rental no", Prompt = "Rental no")]
+        public int Rental_reg { get; set; }
+
     }
 }

@@ -9,8 +9,7 @@ namespace RentalPad.Models
 {
     public class Rooms_reg
     {
-        [Key]
-        public int id { get; set; }
+        
 
 
         //[ForeignKey("id")]
@@ -19,7 +18,7 @@ namespace RentalPad.Models
         public int Rental_reg { get; set; }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Required]
         [Display(Name = "Room number", Prompt = "Room number")]
         public String Room_number { get; set; }
 

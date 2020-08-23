@@ -14,6 +14,13 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+
+                <select asp-for="National_id"
+                        class="form-control"
+                        asp-items="@(new SelectList(@ViewBag.IDlist,"National_id","Full_names"))">
+                </select>
+
+
                 <label asp-for="National_id" class="control-label"></label>
                 <input asp-for="National_id" class="form-control" />
                 <span asp-validation-for="National_id" class="text-danger"></span>

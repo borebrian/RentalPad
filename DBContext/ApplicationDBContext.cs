@@ -21,6 +21,15 @@ namespace Fuela.DBContext
    
      
         public DbSet<RentalPad.Models.Rentals_reg> Rentals_reg { get; set; }
+   
+     
+        public DbSet<RentalPad.Models.Rooms_reg> Rooms_reg { get; set; }
+   
+     
+        public DbSet<RentalPad.Models.Room_Category> Room_Category { get; set; }
+   
+     
+        public DbSet<RentalPad.Models.Tenants> Tenants { get; set; }
      
     }
 }

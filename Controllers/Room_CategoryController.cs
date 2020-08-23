@@ -10,22 +10,22 @@ using RentalPad.Models;
 
 namespace RentalPad.Controllers
 {
-    public class Rental_OwnersController : Controller
+    public class Room_CategoryController : Controller
     {
         private readonly ApplicationDBContext _context;
 
-        public Rental_OwnersController(ApplicationDBContext context)
+        public Room_CategoryController(ApplicationDBContext context)
         {
             _context = context;
         }
 
-        // GET: Rental_Owners
+        // GET: Room_Category
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Rental_owners.ToListAsync());
+            return View(await _context.Room_Category.ToListAsync());
         }
 
-        // GET: Rental_Owners/Details/5
+        // GET: Room_Category/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,41 +33,39 @@ namespace RentalPad.Controllers
                 return NotFound();
             }
 
-            var rental_Owners = await _context.Rental_owners
-                .FirstOrDefaultAsync(m => m.National_id == id);
-            if (rental_Owners == null)
+            var room_Category = await _context.Room_Category
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (room_Category == null)
             {
                 return NotFound();
             }
 
-            return View(rental_Owners);
+            return View(room_Category);
         }
 
-        // GET: Rental_Owners/Create
+        // GET: Room_Category/Create
         public IActionResult Create()
         {
-
-
             return View();
         }
 
-        // POST: Rental_Owners/Create
+        // POST: Room_Category/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("National_id,Full_names,Phone_number,Location")] Rental_Owners rental_Owners)
+        public async Task<IActionResult> Create([Bind("Id,Category,Rent_Ammount")] Room_Category room_Category)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(rental_Owners);
+                _context.Add(room_Category);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(rental_Owners);
+            return View(room_Category);
         }
 
-        // GET: Rental_Owners/Edit/5
+        // GET: Room_Category/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +73,22 @@ namespace RentalPad.Controllers
                 return NotFound();
             }
 
-            var rental_Owners = await _context.Rental_owners.FindAsync(id);
-            if (rental_Owners == null)
+            var room_Category = await _context.Room_Category.FindAsync(id);
+            if (room_Category == null)
             {
                 return NotFound();
             }
-            return View(rental_Owners);
+            return View(room_Category);
         }
 
-        // POST: Rental_Owners/Edit/5
+        // POST: Room_Category/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("National_id,Full_names,Phone_number,Location")] Rental_Owners rental_Owners)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Category,Rent_Ammount")] Room_Category room_Category)
         {
-            if (id != rental_Owners.National_id)
+            if (id != room_Category.Id)
             {
                 return NotFound();
             }
@@ -99,12 +97,12 @@ namespace RentalPad.Controllers
             {
                 try
                 {
-                    _context.Update(rental_Owners);
+                    _context.Update(room_Category);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!Rental_OwnersExists(rental_Owners.National_id))
+                    if (!Room_CategoryExists(room_Category.Id))
                     {
                         return NotFound();
                     }
@@ -115,10 +113,10 @@ namespace RentalPad.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(rental_Owners);
+            return View(room_Category);
         }
 
-        // GET: Rental_Owners/Delete/5
+        // GET: Room_Category/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +124,30 @@ namespace RentalPad.Controllers
                 return NotFound();
             }
 
-            var rental_Owners = await _context.Rental_owners
-                .FirstOrDefaultAsync(m => m.National_id == id);
-            if (rental_Owners == null)
+            var room_Category = await _context.Room_Category
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (room_Category == null)
             {
                 return NotFound();
             }
 
-            return View(rental_Owners);
+            return View(room_Category);
         }
 
-        // POST: Rental_Owners/Delete/5
+        // POST: Room_Category/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var rental_Owners = await _context.Rental_owners.FindAsync(id);
-            _context.Rental_owners.Remove(rental_Owners);
+            var room_Category = await _context.Room_Category.FindAsync(id);
+            _context.Room_Category.Remove(room_Category);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool Rental_OwnersExists(int id)
+        private bool Room_CategoryExists(int id)
         {
-            return _context.Rental_owners.Any(e => e.National_id == id);
+            return _context.Room_Category.Any(e => e.Id == id);
         }
     }
 }
